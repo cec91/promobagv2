@@ -11,7 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
  * Created by vsantucc on 17/05/2017.
  */
 @SpringBootApplication
-@ComponentScan(basePackageClasses = ControllerPromobag.class)
 public class Application extends SpringBootServletInitializer{
 
     public static void main(String[] args) {
