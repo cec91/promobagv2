@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestControllerPromobag {
 
-    @RequestMapping(value="/hello")
+    @RequestMapping(value="/hello/promobag")
     public String sayHello(){
+        return "Hello from promobag";
+    }
+
+    @RequestMapping("hello")
+    public String hello(){
         return "Hello from promobag";
     }
 
