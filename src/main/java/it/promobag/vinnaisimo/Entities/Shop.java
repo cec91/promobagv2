@@ -18,7 +18,7 @@ public class Shop {
     private String shopName;
 
     @OneToOne
-    @JoinColumn(name = "owner_id")
+    @JoinColumn(name = "owner_id") //qui anche @PrimaryKeyJoinColumn
     private ShopOwner owner;
 
     public Shop() {

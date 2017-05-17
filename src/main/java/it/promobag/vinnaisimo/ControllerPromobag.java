@@ -24,4 +24,10 @@ public class ControllerPromobag {
         return namer;
 
     }
+
+    @RequestMapping(value="/user/card/all")
+    public String getAllCardsofUser(){
+
+        return "";
+    }
 }
