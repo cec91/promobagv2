@@ -17,6 +17,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public String getUserByName(String name) {
+        System.out.println("Vado a cercare l'utente : " + name);
         User us = (User) em.createQuery("SELECT u FROM User u WHERE u.name =:name").setParameter("name", name).getSingleResult();
         return us.getName();
     }
