@@ -1,6 +1,7 @@
 package it.promobag.vinnaisimo.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Created by vsantucc on 17/05/2017.
@@ -23,6 +24,11 @@ public class User {
 
     @Column(name="password")
     private String password;
+
+    @OneToMany(cascade={CascadeType.ALL})
+    @JoinColumn(name="user_id")
+    private ArrayList<PromoCard> cards;
+
 
     public int getUserId() {
         return userId;
@@ -54,5 +60,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public ArrayList<PromoCard> getCards() {
+        return cards;
+    }
+
+    public void setCards(ArrayList<PromoCard> cards) {
+        this.cards = cards;
     }
 }

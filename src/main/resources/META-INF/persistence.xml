@@ -4,6 +4,8 @@
     <persistence-unit name="PersistenceUnit">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>it.promobag.vinnaisimo.Entities.User</class>
+        <class>it.promobag.vinnaisimo.Entities.Shop</class>
+        <class>it.promobag.vinnaisimo.Entities.PromoCard</class>
 
 
         <properties>
