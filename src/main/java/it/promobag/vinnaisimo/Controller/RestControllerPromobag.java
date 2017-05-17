@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestControllerPromobag {
 
-    @RequestMapping(value="/promobag/hello")
+    @RequestMapping(value="/hello")
     public String sayHello(){
         return "Hello from promobag";
     }
 
-    @RequestMapping(value="/promobag/user")
+    @RequestMapping(value="/user")
     public String user(){
         UserDaoImpl userDao = new UserDaoImpl();
         String namer = userDao.getUserByName("Vincenzo Santucci");
