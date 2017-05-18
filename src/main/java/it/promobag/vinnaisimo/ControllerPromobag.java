@@ -1,7 +1,9 @@
 package it.promobag.vinnaisimo;
 
 import it.promobag.vinnaisimo.Dao.PromocardDaoImpl;
+import it.promobag.vinnaisimo.Dao.ShopOwnerDaoImpl;
 import it.promobag.vinnaisimo.Dao.UserDaoImpl;
+import it.promobag.vinnaisimo.Dto.ShopOwnerDTO;
 import it.promobag.vinnaisimo.Dto.UserDTO;
 import it.promobag.vinnaisimo.Entities.PromoCard;
 import org.springframework.http.HttpStatus;
@@ -31,8 +33,7 @@ public class ControllerPromobag {
         return namer;
 
     }
-
-    //@PathVariable String userId, @RequestBody Bookmark input
+    //SIGNIN UTENTE FUNZIONANTE
     @RequestMapping(value="/user/signin", method= RequestMethod.POST)
     public HttpStatus siginIn(@RequestBody UserDTO input){
             new UserDaoImpl().insertUser(input);
@@ -40,6 +41,17 @@ public class ControllerPromobag {
 
 
     }
+    //SIGNIN VENDITORE
+    @RequestMapping(value="/shopowner/signin", method= RequestMethod.POST)
+    public HttpStatus siginInShop(@RequestBody ShopOwnerDTO input){
+        new ShopOwnerDaoImpl().insertUser(input);
+        return HttpStatus.OK;
+
+
+    }
+
+
+
 
     @RequestMapping(value="/user/promocard/all/{id}", method = RequestMethod.GET)
     public String getAllCardsofUser(@PathVariable(value="id") String id){

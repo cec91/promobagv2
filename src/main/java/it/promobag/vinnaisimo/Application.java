@@ -16,12 +16,7 @@ public class Application extends SpringBootServletInitializer{
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
 
-        UserDTO udto = new UserDTO();
-        udto.setName("Simone");
-        udto.setPassword("password");
-        udto.setMail("prova");
-        UserDaoImpl userDao = new UserDaoImpl();
-        userDao.insertUser(udto);
+
     }
 
     @Override
