@@ -1,10 +1,12 @@
 package it.promobag.vinnaisimo.Dao;
 
+import it.promobag.vinnaisimo.Dto.UserDTO;
 import it.promobag.vinnaisimo.Entities.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 
 
 /**
@@ -29,18 +31,29 @@ public class UserDaoImpl implements UserDao {
         return us.getName();
     }
 
+    public ArrayList<User> getUsersByPromocardId(int id){
+
+        ArrayList<User> users = new ArrayList<User>();
+        try{
+            users = (ArrayList<User>) em.createQuery("SELECT u FROM User u WHERE u.name =:name").setParameter("promocardid", id).getResultList();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return users;
+    }
+
     @Override
-    public void insertUser() {
+    public void insertUser(UserDTO userR) {
         User user = new User();
-        user.setName("Vincenzo Santucci");
-        user.setEmail("vincenzo.santucci1@gmail.com");
-        user.setPassword("password");
+        user.setName(userR.getName());
+        user.setEmail(userR.getMail());
+        user.setPassword(userR.getPassword());
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
         System.out.println("Transaction committed successfully");
 
-        User us = (User) em.createQuery("SELECT u FROM User u WHERE u.name =:name").setParameter("name", "Vincenzo Santucci").getSingleResult();
+        User us = (User) em.createQuery("SELECT u FROM User u WHERE u.name =:name").setParameter("name", userR.getName()).getSingleResult();
         System.out.println("Name retrieved is: " + us.getName());
     }
 }

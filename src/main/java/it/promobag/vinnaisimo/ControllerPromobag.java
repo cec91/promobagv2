@@ -1,8 +1,12 @@
 package it.promobag.vinnaisimo;
 
+import it.promobag.vinnaisimo.Dao.PromocardDaoImpl;
 import it.promobag.vinnaisimo.Dao.UserDaoImpl;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import it.promobag.vinnaisimo.Dto.UserDTO;
+import it.promobag.vinnaisimo.Entities.PromoCard;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 /**
  * Created by vsantucc on 17/05/2017.
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ControllerPromobag {
 
+
+    //base path /promobag
     @RequestMapping(value="/hello")
     public String sayHello(){
         return "Hello from promobag";
@@ -25,8 +31,27 @@ public class ControllerPromobag {
 
     }
 
-    @RequestMapping(value="/user/card/all")
-    public String getAllCardsofUser(){
+    //@PathVariable String userId, @RequestBody Bookmark input
+    @RequestMapping(value="/user/signin", method= RequestMethod.POST)
+    public void siginIn(@RequestBody UserDTO input){
+            new UserDaoImpl().insertUser(input);
+
+    }
+
+    @RequestMapping(value="/user/promocard/all/{id}", method = RequestMethod.GET)
+    public String getAllCardsofUser(@PathVariable(value="id") String id){
+        int idU = Integer.valueOf(id);
+        PromocardDaoImpl promocardDaoI = new PromocardDaoImpl();
+        ArrayList<PromoCard> cards = promocardDaoI.getAllCardOfUser(idU);
+        return "";
+    }
+
+    @RequestMapping(value="/shopowner/user/all/{shop_id}", method = RequestMethod.GET)
+    public String getAllUsersLinked(@PathVariable(value="shop_id") String id){
+        int idS = Integer.valueOf(id);
+        PromoCard pc = new PromocardDaoImpl().getPromoCardByShopId(idS);
+        //qua prendere tutti gli utenti con promocard id
+
 
         return "";
     }
