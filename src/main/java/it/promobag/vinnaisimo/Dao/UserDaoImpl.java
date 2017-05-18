@@ -5,6 +5,7 @@ import it.promobag.vinnaisimo.Entities.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -55,8 +56,15 @@ public class UserDaoImpl implements UserDao {
         em.persist(user);
         em.getTransaction().commit();
         System.out.println("Transaction committed successfully");
-
-        User us = (User) em.createQuery("SELECT u FROM User u WHERE u.name =:name").setParameter("name", userR.getName()).getSingleResult();
-        System.out.println("Name retrieved is: " + us.getName());
+        try {
+            User us = (User) em.createQuery("SELECT u FROM User u WHERE u.name =:name").setParameter("name", userR.getName()).getSingleResult();
+            System.out.println("Name retrieved is: " + us.getName());
+        }catch(NonUniqueResultException e){
+            e.printStackTrace();
+            ArrayList<User>  retrieved = (ArrayList<User>) em.createQuery("SELECT u FROM User u WHERE u.name =:name").setParameter("name", userR.getName()).getResultList();
+          for(User u : retrieved){
+              System.out.println("Name retrieved is: " + u.getName());
+          }
+        }
     }
 }
