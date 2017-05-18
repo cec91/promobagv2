@@ -7,6 +7,7 @@
         <class>it.promobag.vinnaisimo.Entities.Shop</class>
         <class>it.promobag.vinnaisimo.Entities.PromoCard</class>
         <class>it.promobag.vinnaisimo.Entities.ShopOwner</class>
+        <class>it.promobag.vinnaisimo.Entities.Promotion</class>
 
 
         <properties>
