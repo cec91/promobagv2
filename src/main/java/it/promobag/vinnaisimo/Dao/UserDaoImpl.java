@@ -21,17 +21,17 @@ public class UserDaoImpl implements UserDao {
     private EntityManager em = emf.createEntityManager();
 
     @Override
-    public String getUserByName(String name) {
-        System.out.println("Vado a cercare l'utente : " + name);
+    public User getUserByMail(UserDTO user) {
+
         User us = new User();
         try{
-            us = (User) em.createQuery("SELECT u FROM User u WHERE u.name =:name").setParameter("name", "Vincenzo Santucci").getSingleResult();
+            us = (User) em.createQuery("SELECT u FROM User u WHERE u.mail =:,ail").setParameter("mail", user.getMail()).getSingleResult();
 
         }catch(Exception e){
             e.printStackTrace();
         }
 
-        return us.getName();
+        return us;
     }
 
     public Set<User> getUsersByPromocardId(int id){

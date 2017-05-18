@@ -10,7 +10,7 @@ import java.util.Set;
  * Created by vsantucc on 17/05/2017.
  */
 public interface UserDao {
-    String getUserByName(String name);
+    User getUserByMail(UserDTO user);
     void insertUser(UserDTO userR);
     Set<User> getUsersByPromocardId(int id);
 }

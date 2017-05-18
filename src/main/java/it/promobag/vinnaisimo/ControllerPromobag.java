@@ -10,6 +10,7 @@ import it.promobag.vinnaisimo.Dto.UserDTO;
 import it.promobag.vinnaisimo.Entities.PromoCard;
 import it.promobag.vinnaisimo.Entities.Promotion;
 import it.promobag.vinnaisimo.Entities.Shop;
+import it.promobag.vinnaisimo.Entities.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,14 +32,14 @@ public class ControllerPromobag {
         return "Hello from promobag";
     }
 
-    @RequestMapping(value="/user")
+  /*  @RequestMapping(value="/user")
     public String user(){
         UserDaoImpl userDao = new UserDaoImpl();
         String namer = userDao.getUserByName("Vincenzo Santucci");
         System.out.println("il nome preso dal database e: " + namer);
         return namer;
 
-    }
+    } */
     //SIGNIN UTENTE FUNZIONANTE
     @RequestMapping(value="/user/signin", method= RequestMethod.POST)
     public HttpStatus siginIn(@RequestBody UserDTO input){
@@ -48,6 +49,22 @@ public class ControllerPromobag {
 
 
     }
+
+    //LOGIN LATO UTENTE 
+    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+    public HttpStatus logIn(@RequestBody UserDTO input){
+        UserDaoImpl udi = new UserDaoImpl();
+        User us = udi.getUserByMail(input);
+        if (us.getPassword().equals(input.getPassword())){
+
+            return HttpStatus.OK;
+        }else{
+
+            return HttpStatus.NOT_FOUND;
+        }
+
+    }
+
     //SIGNIN VENDITORE
     @RequestMapping(value="/shopowner/signin", method= RequestMethod.POST)
     public HttpStatus siginInShop(@RequestBody ShopOwnerDTO input){
