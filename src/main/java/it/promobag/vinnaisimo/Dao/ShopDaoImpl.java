@@ -27,4 +27,12 @@ public class ShopDaoImpl implements ShopDao {
 
         return shop;
     }
+
+    @Override
+    public void updateShop(Shop shopU) {
+        em.getTransaction().begin();
+        em.merge(shopU);
+        em.getTransaction().commit();
+        System.out.println("Transaction committed successfully");
+    }
 }
