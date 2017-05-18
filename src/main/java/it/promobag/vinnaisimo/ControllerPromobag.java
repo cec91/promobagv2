@@ -7,6 +7,7 @@ import it.promobag.vinnaisimo.Entities.PromoCard;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by vsantucc on 17/05/2017.
@@ -42,7 +43,7 @@ public class ControllerPromobag {
     public String getAllCardsofUser(@PathVariable(value="id") String id){
         int idU = Integer.valueOf(id);
         PromocardDaoImpl promocardDaoI = new PromocardDaoImpl();
-        ArrayList<PromoCard> cards = promocardDaoI.getAllCardOfUser(idU);
+        Set<PromoCard> cards = promocardDaoI.getAllCardOfUser(idU);
         return "";
     }
 
