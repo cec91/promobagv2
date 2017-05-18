@@ -4,9 +4,9 @@ import it.promobag.vinnaisimo.Dao.PromocardDaoImpl;
 import it.promobag.vinnaisimo.Dao.UserDaoImpl;
 import it.promobag.vinnaisimo.Dto.UserDTO;
 import it.promobag.vinnaisimo.Entities.PromoCard;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -34,8 +34,10 @@ public class ControllerPromobag {
 
     //@PathVariable String userId, @RequestBody Bookmark input
     @RequestMapping(value="/user/signin", method= RequestMethod.POST)
-    public void siginIn(@RequestBody UserDTO input){
+    public HttpStatus siginIn(@RequestBody UserDTO input){
             new UserDaoImpl().insertUser(input);
+        return HttpStatus.OK;
+
 
     }
 
