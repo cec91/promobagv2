@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -31,7 +33,7 @@ public class UserDaoImpl implements UserDao {
         return us.getName();
     }
 
-    public ArrayList<User> getUsersByPromocardId(int id){
+    public Set<User> getUsersByPromocardId(int id){
 
         ArrayList<User> users = new ArrayList<User>();
         try{
@@ -39,7 +41,8 @@ public class UserDaoImpl implements UserDao {
         }catch(Exception e){
             e.printStackTrace();
         }
-        return users;
+        Set<User> usersSet = new HashSet<User>(users);
+        return usersSet;
     }
 
     @Override

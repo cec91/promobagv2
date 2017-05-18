@@ -2,6 +2,7 @@ package it.promobag.vinnaisimo.Entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by vsantucc on 17/05/2017.
@@ -27,7 +28,7 @@ public class User {
 
     @OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name="user_id")
-    private ArrayList<PromoCard> cards;
+    private Set<PromoCard> cards;
 
 
     public int getUserId() {
@@ -62,11 +63,11 @@ public class User {
         this.password = password;
     }
 
-    public ArrayList<PromoCard> getCards() {
+    public Set<PromoCard> getCards() {
         return cards;
     }
 
-    public void setCards(ArrayList<PromoCard> cards) {
+    public void setCards(Set<PromoCard> cards) {
         this.cards = cards;
     }
 }

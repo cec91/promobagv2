@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by vsantucc on 18/05/2017.
@@ -17,7 +18,7 @@ public class PromocardDaoImpl implements PromocardDao {
     private EntityManager em = emf.createEntityManager();
 
     @Override
-    public ArrayList<PromoCard> getAllCardOfUser(int id) {
+    public Set<PromoCard> getAllCardOfUser(int id) {
         User us = new User();
 
         try{
