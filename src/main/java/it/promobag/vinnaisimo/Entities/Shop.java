@@ -1,6 +1,7 @@
 package it.promobag.vinnaisimo.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Created by VSANTUCC on 17/05/2017.
@@ -17,11 +18,23 @@ public class Shop {
     @Column(name = "shop_name")
     private String shopName;
 
+    @OneToMany(cascade={CascadeType.ALL})
+    @JoinColumn(name="shop_id")
+    private ArrayList<Promotion> promotions;
+
     @OneToOne
     @JoinColumn(name = "owner_id") //qui anche @PrimaryKeyJoinColumn
     private ShopOwner owner;
 
     public Shop() {
+    }
+
+    public ArrayList<Promotion> getPromotions() {
+        return promotions;
+    }
+
+    public void setPromotions(ArrayList<Promotion> promotions) {
+        this.promotions = promotions;
     }
 
     public int getId() {
