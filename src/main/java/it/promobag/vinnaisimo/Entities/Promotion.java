@@ -21,7 +21,7 @@ public class Promotion {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name="shop_id", insertable=false, updatable=false, nullable=false)
+    @JoinColumn(name="shop_id")
     private Shop shop;
 
     public Promotion() {
