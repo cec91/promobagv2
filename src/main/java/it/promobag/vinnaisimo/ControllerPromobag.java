@@ -75,6 +75,7 @@ public class ControllerPromobag {
     public HttpStatus insertPromotion(@RequestBody PromotionDTO input){
         ShopDaoImpl sdi = new ShopDaoImpl();
         Shop shop = sdi.getShopByName(input.getShopName());
+        System.out.println("Retrieved shop: " + shop.getShopOwner().getName());
         Promotion promo = new Promotion();
         promo.setTitle(input.getTitle());
         promo.setDescription(input.getDescription());

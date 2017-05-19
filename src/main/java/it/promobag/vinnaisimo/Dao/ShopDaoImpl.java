@@ -30,6 +30,7 @@ public class ShopDaoImpl implements ShopDao {
 
     @Override
     public void updateShop(Shop shopU) {
+        System.out.println("Vado a fare l'update dl");
         em.getTransaction().begin();
         em.merge(shopU);
         em.getTransaction().commit();
