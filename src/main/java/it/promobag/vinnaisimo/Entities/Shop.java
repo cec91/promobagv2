@@ -12,8 +12,8 @@ import java.util.Set;
 public class Shop {
 
     @Id
-    @Column(name = "shop_id")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+  //  @Column(name = "shop_id")
+  //  @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     @Column(name = "shop_name")
@@ -23,8 +23,7 @@ public class Shop {
     @JoinColumn(name="shop_id")
     private Set<Promotion> promotions;
 
-    @OneToOne(mappedBy="shop")
-    @PrimaryKeyJoinColumn
+    @OneToOne @MapsId
     public ShopOwner shopOwner;
 
     public Shop() {
