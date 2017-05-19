@@ -13,7 +13,8 @@ public class ShopOwner {
 
     @Id
     @Column(name = "owner_id")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @org.hibernate.annotations.GenericGenerator(name="hilo-strategy", strategy = "hilo")
+    @GeneratedValue(generator = "hilo-strategy")
     private int ownerId;
 
     @Column(name = "name")
