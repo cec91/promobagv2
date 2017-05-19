@@ -23,6 +23,10 @@ public class ShopOwner {
     @Column(name = "password")
     private String password;
 
+    @OneToOne
+    @JoinColumn(name = "shop_id") //qui anche @PrimaryKeyJoinColumn
+    private Shop shop;
+
     public ShopOwner() {
     }
 
@@ -56,5 +60,13 @@ public class ShopOwner {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 }

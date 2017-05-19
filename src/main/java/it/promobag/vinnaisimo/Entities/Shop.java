@@ -23,9 +23,7 @@ public class Shop {
     @JoinColumn(name="shop_id")
     private Set<Promotion> promotions;
 
-    @OneToOne (cascade = {CascadeType.ALL})
-    @JoinColumn(name = "owner_id") //qui anche @PrimaryKeyJoinColumn
-    private ShopOwner owner;
+
 
     public Shop() {
     }
@@ -54,11 +52,5 @@ public class Shop {
         this.shopName = shopName;
     }
 
-    public ShopOwner getOwner() {
-        return owner;
-    }
 
-    public void setOwner(ShopOwner owner) {
-        this.owner = owner;
-    }
 }
