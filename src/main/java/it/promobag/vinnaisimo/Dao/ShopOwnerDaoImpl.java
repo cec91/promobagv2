@@ -27,6 +27,7 @@ public class ShopOwnerDaoImpl implements ShopOwnerDao{
         System.out.println("vado a salvare lo shop owner");
         shop.setShopName(ownerDTO.getShop_name());
         so.setShop(shop);
+        System.out.println("Dio ladro: " + so.getShop().getShopName());
         em.getTransaction().begin();
         em.persist(so);
         em.getTransaction().commit();
