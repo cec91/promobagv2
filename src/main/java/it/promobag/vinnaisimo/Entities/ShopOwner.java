@@ -1,5 +1,7 @@
 package it.promobag.vinnaisimo.Entities;
 
+import it.promobag.vinnaisimo.Entities.Shop;
+
 import javax.persistence.*;
 
 /**
@@ -11,9 +13,7 @@ public class ShopOwner {
 
     @Id
     @Column(name = "owner_id")
-    @org.hibernate.annotations.GenericGenerator(name="hilo-strategy", strategy = "hilo")
-    @GeneratedValue(generator = "hilo-strategy")
-    //@GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int ownerId;
 
     @Column(name = "name")

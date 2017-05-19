@@ -15,11 +15,11 @@ public class ShopDaoImpl implements ShopDao {
     private EntityManager em = emf.createEntityManager();
 
     @Override
-    public Shop getShopById(int id) {
+    public Shop getShopByName(String name) {
 
         Shop shop = new Shop();
         try{
-                shop = (Shop) em.createQuery("SELECT s FROM Shop s WHERE s.id =:id").setParameter("id", id).getSingleResult();
+                shop = (Shop) em.createQuery("SELECT s FROM Shop s WHERE s.name =:name").setParameter("name", name).getSingleResult();
 
         }catch(Exception e){
             e.printStackTrace();
@@ -34,5 +34,19 @@ public class ShopDaoImpl implements ShopDao {
         em.merge(shopU);
         em.getTransaction().commit();
         System.out.println("Transaction committed successfully");
+    }
+
+    @Override
+    public Shop getShopById(int id) {
+
+        Shop shop = new Shop();
+        try{
+            shop = (Shop) em.createQuery("SELECT s FROM Shop s WHERE s.id =:id").setParameter("id", id).getSingleResult();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return shop;
     }
 }

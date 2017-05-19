@@ -10,6 +10,9 @@ import javax.persistence.Id;
  */
 public class PromotionDTO extends BasicDTO{
 
+    private String shopName;
+
+    private String title;
 
     private int shopId;
 
@@ -17,6 +20,22 @@ public class PromotionDTO extends BasicDTO{
 
     public int getShopId() {
         return shopId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setShopId(int shopId) {

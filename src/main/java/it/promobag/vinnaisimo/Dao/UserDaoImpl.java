@@ -3,10 +3,7 @@ package it.promobag.vinnaisimo.Dao;
 import it.promobag.vinnaisimo.Dto.UserDTO;
 import it.promobag.vinnaisimo.Entities.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.NonUniqueResultException;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,14 +18,16 @@ public class UserDaoImpl implements UserDao {
     private EntityManager em = emf.createEntityManager();
 
     @Override
-    public User getUserByMail(UserDTO user) {
+    public User getUserByMail(String mail) {
 
         User us = new User();
         try{
-            us = (User) em.createQuery("SELECT u FROM User u WHERE u.email =:email").setParameter("email", user.getMail()).getSingleResult();
+            us = (User) em.createQuery("SELECT u FROM User u WHERE u.email =:email").setParameter("email", mail).getSingleResult();
 
-        }catch(Exception e){
+        }catch(NoResultException e){
+
             e.printStackTrace();
+            return null;
         }
 
         return us;
@@ -66,5 +65,13 @@ public class UserDaoImpl implements UserDao {
               System.out.println("Name retrieved is: " + u.getName());
           }
         }
+    }
+
+    @Override
+    public void updateUser(User us) {
+        em.getTransaction().begin();
+        em.merge(us);
+        em.getTransaction().commit();
+        System.out.println("Transaction committed successfully");
     }
 }

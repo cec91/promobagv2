@@ -16,6 +16,7 @@ public class Shop {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
+
     @Column(name = "shop_name")
     private String shopName;
 
@@ -26,6 +27,9 @@ public class Shop {
 
     @OneToOne(mappedBy = "shop")
     public ShopOwner shopOwner;
+
+    @OneToOne(mappedBy = "shop")
+    public PromoCard promoCard;
 
     public Shop() {
     }
@@ -54,5 +58,19 @@ public class Shop {
         this.shopName = shopName;
     }
 
+    public ShopOwner getShopOwner() {
+        return shopOwner;
+    }
 
+    public void setShopOwner(ShopOwner shopOwner) {
+        this.shopOwner = shopOwner;
+    }
+
+    public PromoCard getPromoCard() {
+        return promoCard;
+    }
+
+    public void setPromoCard(PromoCard promoCard) {
+        this.promoCard = promoCard;
+    }
 }

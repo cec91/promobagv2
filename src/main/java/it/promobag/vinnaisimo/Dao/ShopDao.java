@@ -7,7 +7,8 @@ import it.promobag.vinnaisimo.Entities.Shop;
  */
 public interface ShopDao {
 
-    Shop getShopById(int id);
+    Shop getShopByName(String name);
     void updateShop(Shop shopU);
+    Shop getShopById(int id);
 
 }

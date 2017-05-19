@@ -14,6 +14,9 @@ public class Promotion {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "description")
     private String description;
 
@@ -46,5 +49,13 @@ public class Promotion {
 
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

@@ -11,18 +11,20 @@ public class PromoCard {
 
     @Id
     @Column(name = "card_id")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @org.hibernate.annotations.GenericGenerator(name="hilo-strategy", strategy = "hilo")
+    @GeneratedValue(generator = "hilo-strategy")
     private int id;
 
     @Column(name = "gift_check")
     private int gift_check;
 
+
     @ManyToOne
     @JoinColumn(name="user_id", insertable=false, updatable=false, nullable=false)
     private User user;
 
-    @OneToOne
-    @JoinColumn(name = "shop_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shop_name")
     private Shop shop;
 
     public PromoCard() {
@@ -50,5 +52,13 @@ public class PromoCard {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 }

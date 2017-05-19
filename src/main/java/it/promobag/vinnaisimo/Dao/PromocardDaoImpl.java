@@ -18,11 +18,11 @@ public class PromocardDaoImpl implements PromocardDao {
     private EntityManager em = emf.createEntityManager();
 
     @Override
-    public Set<PromoCard> getAllCardOfUser(int id) {
+    public Set<PromoCard> getAllCardOfUser(String mail) {
         User us = new User();
 
         try{
-            us = (User) em.createQuery("SELECT u FROM User u WHERE u.id =:id").setParameter("id", id).getSingleResult();
+            us = (User) em.createQuery("SELECT u FROM User u WHERE u.email =:email").setParameter("email", mail).getSingleResult();
 
         }catch(Exception e){
             e.printStackTrace();
@@ -42,6 +42,6 @@ public class PromocardDaoImpl implements PromocardDao {
         }catch(Exception e){
             e.printStackTrace();
         }
-        return null;
+        return pc;
     }
 }

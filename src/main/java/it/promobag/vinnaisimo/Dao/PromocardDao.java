@@ -10,6 +10,6 @@ import java.util.Set;
  */
 public interface PromocardDao {
 
-    Set<PromoCard> getAllCardOfUser(int id);
+    Set<PromoCard> getAllCardOfUser(String mail);
     PromoCard getPromoCardByShopId(int id);
 }
