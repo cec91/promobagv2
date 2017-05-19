@@ -25,7 +25,7 @@ public class UserDaoImpl implements UserDao {
 
         User us = new User();
         try{
-            us = (User) em.createQuery("SELECT u FROM User u WHERE u.mail =:,ail").setParameter("mail", user.getMail()).getSingleResult();
+            us = (User) em.createQuery("SELECT u FROM User u WHERE u.mail =:mail").setParameter("mail", user.getMail()).getSingleResult();
 
         }catch(Exception e){
             e.printStackTrace();
