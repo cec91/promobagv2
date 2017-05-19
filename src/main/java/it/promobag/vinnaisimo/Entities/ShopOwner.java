@@ -24,7 +24,7 @@ public class ShopOwner {
     private String password;
 
     @OneToOne
-    @JoinColumn(name = "shop_id") //qui anche @PrimaryKeyJoinColumn
+    @PrimaryKeyJoinColumn
     private Shop shop;
 
     public ShopOwner() {

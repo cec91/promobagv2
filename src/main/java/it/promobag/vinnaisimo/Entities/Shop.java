@@ -23,7 +23,9 @@ public class Shop {
     @JoinColumn(name="shop_id")
     private Set<Promotion> promotions;
 
-
+    @OneToOne(mappedBy="shop")
+    @PrimaryKeyJoinColumn
+    public ShopOwner shopOwner;
 
     public Shop() {
     }
