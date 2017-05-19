@@ -23,7 +23,8 @@ public class ShopOwner {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "shopOwner")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shop_id")
     private Shop shop;
 
     public ShopOwner() {
