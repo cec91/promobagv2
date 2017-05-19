@@ -23,7 +23,7 @@ public class Shop {
     @JoinColumn(name="shop_id")
     private Set<Promotion> promotions;
 
-    @OneToOne
+    @OneToOne (cascade = {CascadeType.ALL})
     @JoinColumn(name = "owner_id") //qui anche @PrimaryKeyJoinColumn
     private ShopOwner owner;
 

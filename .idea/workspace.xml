@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="84fbe9d3-ba61-40ea-890b-af3d550cb189" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/ShopOwnerDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/ShopOwnerDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/Shop.java" afterPath="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/Shop.java" />
     </list>
     <ignored path="Promobagv2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,8 +54,8 @@
       <file leaf-file-name="Shop.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/Shop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+            <state relative-caret-position="528">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,8 +66,8 @@
       <file leaf-file-name="ShopOwnerDaoImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/ShopOwnerDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+            <state relative-caret-position="547">
+              <caret line="31" column="68" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,11 +111,9 @@
       <file leaf-file-name="UserDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/UserDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
+            <state relative-caret-position="371">
               <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -151,7 +150,6 @@
         <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dto/userDTO.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/Shop.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/PromocardDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/PromocardDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Application.java" />
@@ -167,6 +165,7 @@
         <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/ControllerPromobag.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/ShopOwner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/Shop.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/ShopOwnerDaoImpl.java" />
       </list>
     </option>
@@ -850,9 +849,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
           <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -947,9 +944,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,9 +1010,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1160,26 +1153,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/UserDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/Shop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dto/UserDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -1195,17 +1168,6 @@
           <folding>
             <element signature="e#865#866#0" expanded="false" />
             <element signature="e#897#898#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/ShopOwner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
-          <folding>
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1240,10 +1202,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/UserDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/Shop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Entities/ShopOwner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
+          <folding>
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/it/promobag/vinnaisimo/Dao/ShopOwnerDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+        <state relative-caret-position="547">
+          <caret line="31" column="68" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
