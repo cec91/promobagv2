@@ -26,11 +26,7 @@ import java.util.Set;
 public class ControllerPromobag {
 
 
-    //base path /promobag
-    @RequestMapping(value="/hello")
-    public String sayHello(){
-        return "Hello from promobag";
-    }
+
 
   /*  @RequestMapping(value="/user")
     public String user(){
@@ -50,7 +46,7 @@ public class ControllerPromobag {
 
     }
 
-    //LOGIN LATO UTENTE 
+    //LOGIN LATO UTENTE
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public HttpStatus logIn(@RequestBody UserDTO input){
         UserDaoImpl udi = new UserDaoImpl();

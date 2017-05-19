@@ -12,7 +12,7 @@ public class ShopOwner {
     @Id
     @Column(name = "owner_id")
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private int ownerId;
 
     @Column(name = "name")
     private String name;
@@ -26,12 +26,12 @@ public class ShopOwner {
     public ShopOwner() {
     }
 
-    public int getId() {
-        return id;
+    public int getOwnerId() {
+        return ownerId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getName() {

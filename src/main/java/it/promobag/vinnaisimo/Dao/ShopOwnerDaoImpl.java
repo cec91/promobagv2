@@ -24,6 +24,7 @@ public class ShopOwnerDaoImpl implements ShopOwnerDao{
         so.setName(ownerDTO.getName());
         so.setMail(ownerDTO.getMail());
         so.setPassword(ownerDTO.getPassword());
+        System.out.println("vado a salvare lo shop owner");
         //qua devo creare anche il negozio
         em.getTransaction().begin();
         em.persist(so);
