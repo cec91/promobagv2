@@ -17,7 +17,7 @@ public class Shop {
     private int id;
 
 
-    @Column(name = "shop_name")
+    @Column(name = "shopName")
     private String shopName;
 
     @OneToMany(cascade={CascadeType.ALL})
