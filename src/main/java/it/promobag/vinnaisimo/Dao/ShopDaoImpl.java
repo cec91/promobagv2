@@ -19,7 +19,7 @@ public class ShopDaoImpl implements ShopDao {
 
         Shop shop = new Shop();
         try{
-                shop = (Shop) em.createQuery("SELECT s FROM Shop s WHERE s.name =:name").setParameter("name", name).getSingleResult();
+                shop = (Shop) em.createQuery("SELECT s FROM Shop s WHERE s.shop_name =:shop_name").setParameter("shop_name", name).getSingleResult();
 
         }catch(Exception e){
             e.printStackTrace();
