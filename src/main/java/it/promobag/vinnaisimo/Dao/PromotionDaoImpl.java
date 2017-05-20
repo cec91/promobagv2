@@ -24,7 +24,7 @@ public class PromotionDaoImpl implements PromotionDao{
 
         try {
 
-            promotions.addAll(em.createQuery("SELECT * FROM Promotion").getResultList());
+            promotions.addAll(em.createQuery("SELECT p FROM Promotion p").getResultList());
 
         }catch(Exception e){
             System.out.println("Errore durante il retrieve delle promotions");
