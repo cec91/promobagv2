@@ -1,5 +1,7 @@
 package it.promobag.vinnaisimo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -44,6 +46,7 @@ public class Promotion {
         this.description = description;
     }
 
+    @JsonIgnore
     public Shop getShop() {
         return shop;
     }

@@ -21,7 +21,7 @@ public class Shop {
     @Column(name = "shopName")
     private String shopName;
     //(cascade={CascadeType.ALL})
-    @OneToMany(cascade={CascadeType.REMOVE})
+    @OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name="shop_id")
     private Set<Promotion> promotions;
 
