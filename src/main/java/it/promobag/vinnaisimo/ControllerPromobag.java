@@ -101,6 +101,11 @@ public class ControllerPromobag {
 
             ArrayList<PromoCard> pcards = new ArrayList<PromoCard>();
             pcards.add(pc);
+            //////////////////
+            for (PromoCard promoCard : pcards){
+                System.out.println("Stampo promocard : " + promoCard.getShop().getShopOwner() + " " + promoCard.getUser().getName());
+            }
+            //////////////////
             us.setCards(new HashSet<PromoCard>(pcards));
 
             new UserDaoImpl().updateUser(us);
