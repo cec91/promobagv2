@@ -1,5 +1,7 @@
 package it.promobag.vinnaisimo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Set;
@@ -66,7 +68,7 @@ public class Shop {
     public void setShopOwner(ShopOwner shopOwner) {
         this.shopOwner = shopOwner;
     }
-
+    @JsonIgnore
     public PromoCard getPromoCard() {
         return promoCard;
     }
