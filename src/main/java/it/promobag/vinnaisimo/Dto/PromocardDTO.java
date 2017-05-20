@@ -12,7 +12,7 @@ public class PromocardDTO {
     private String userMail;
 
 
-    private boolean isFirst;
+    private int first;
 
     public PromocardDTO() {
     }
@@ -43,11 +43,11 @@ public class PromocardDTO {
         this.shopName = shopName;
     }
 
-    public boolean isFirst() {
-        return isFirst;
+    public int getFirst() {
+        return first;
     }
 
-    public void setFirst(boolean first) {
-        isFirst = first;
+    public void setFirst(int first) {
+        this.first = first;
     }
 }

@@ -89,9 +89,9 @@ public class ControllerPromobag {
     @RequestMapping(value = "/user/promocard", method = RequestMethod.POST)
     public HttpStatus insertOrUpdatePromocard(@RequestBody PromocardDTO input){
 
-        System.out.println(input.toString());
+        System.out.println("FISRT: " + input.getFirst());
 
-        if (input.isFirst()){
+        if (input.getFirst() == 1){
             System.out.println("Prima promocard");
             User us = new UserDaoImpl().getUserByMail(input.getUserMail());
             Shop shop = new ShopDaoImpl().getShopByName(input.getShopName());
