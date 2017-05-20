@@ -1,5 +1,6 @@
 package it.promobag.vinnaisimo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import it.promobag.vinnaisimo.Entities.Shop;
 
 import javax.persistence.*;
@@ -65,6 +66,7 @@ public class ShopOwner {
         this.password = password;
     }
 
+    @JsonIgnore
     public Shop getShop() {
         return shop;
     }
