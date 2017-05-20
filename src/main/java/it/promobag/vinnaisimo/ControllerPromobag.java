@@ -137,7 +137,7 @@ public class ControllerPromobag {
     public UserCardsDTO getAllCardsofUser(@PathVariable(value="user_mail") String user_mail){
 
 
-        Set<PromoCard> cards = new UserDaoImpl().getUserByMail(user_mail).getCards();
+        Set<PromoCard> cards = new UserDaoImpl().getUserByMail(user_mail + ".com").getCards();
 
         return new UserCardsDTO(user_mail, new ArrayList<PromoCard>(cards));
     }
