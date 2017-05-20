@@ -11,7 +11,8 @@ public class Promotion {
 
     @Id
     @Column(name = "promotion_id")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @org.hibernate.annotations.GenericGenerator(name="hilo-strategy", strategy = "hilo")
+    @GeneratedValue(generator = "hilo-strategy")
     private int id;
 
     @Column(name = "title")

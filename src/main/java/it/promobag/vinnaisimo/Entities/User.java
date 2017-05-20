@@ -14,7 +14,8 @@ public class User {
 
     @Id
     @Column(name = "user_id")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @org.hibernate.annotations.GenericGenerator(name="hilo-strategy", strategy = "hilo")
+    @GeneratedValue(generator = "hilo-strategy")
     private int userId;
 
     @Column(name="name")
