@@ -9,17 +9,27 @@ import java.util.ArrayList;
  */
 public class AllPromotionDTO {
 
-    private ArrayList<Promotion> promotions;
+    private Promotion promotions;
+    private String shopName;
 
-    public AllPromotionDTO(ArrayList<Promotion> promotions) {
+    public AllPromotionDTO(Promotion promotions, String shopName) {
         this.promotions = promotions;
+        this.shopName = shopName;
     }
 
-    public ArrayList<Promotion> getPromotions() {
+    public Promotion getPromotions() {
         return promotions;
     }
 
-    public void setPromotions(ArrayList<Promotion> promotions) {
+    public void setPromotions(Promotion promotions) {
         this.promotions = promotions;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 }

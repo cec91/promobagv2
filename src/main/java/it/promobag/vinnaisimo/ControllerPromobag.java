@@ -169,9 +169,13 @@ public class ControllerPromobag {
 
     ///TODO visualizzare promozioni negozio
     @RequestMapping(value="/user/all/promotions/", method = RequestMethod.GET)
-    public AllPromotionDTO getAllPromotions(){
+    public ArrayList<AllPromotionDTO> getAllPromotions(){
                ArrayList<Promotion> promotions =  new PromotionDaoImpl().getAllPromotion();
+                ArrayList<AllPromotionDTO> allPromotionDTOs = new ArrayList<AllPromotionDTO>();
+        for (Promotion pro : promotions){
 
-        return new AllPromotionDTO(promotions);
+            allPromotionDTOs.add(new AllPromotionDTO(pro,pro.getShop().getShopName()));
+        }
+        return allPromotionDTOs;
     }
 }
