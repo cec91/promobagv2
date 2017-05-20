@@ -102,18 +102,27 @@ public class ControllerPromobag {
 
 
             ArrayList<PromoCard> pcards = new ArrayList<PromoCard>();
-            pcards.add(pc);
-            //////////////////
-            for (PromoCard promoCard : pcards){
-                System.out.println("Stampo promocard : " + promoCard.getShop().getShopOwner().getName() + " " + promoCard.getUser().getName());
+            Set<PromoCard> pcs1 = us.getCards();
+
+            if (pcs1 == null || pcs1.size() == 0){
+
+                //bisogna creare l'arraylist e metterci la promocard
+                pcards = new ArrayList<PromoCard>();
+
+            }else{
+                //bisogna trasformarlo in arraylist e inserire la promocard
+                pcards.addAll(us.getCards());
+
             }
-            //////////////////
+            pcards.add(pc);
+
+
             us.setCards(new HashSet<PromoCard>(pcards));
 
             new UserDaoImpl().updateUser(us);
 
 
-        }else{
+        }else{ //caso in cui non è il primo timbro
             System.out.println("Promocard esistente");
             //prendo sempre l'utente
             User us = new UserDaoImpl().getUserByMail(input.getUserMail());
@@ -136,10 +145,6 @@ public class ControllerPromobag {
         return HttpStatus.OK;
     }
 
-
-    /////////////////////////////////**************FUNZIONANTI*********************////////////////////////////////////////
-
-    ////TODO DA TESTARE
     @RequestMapping(value="/user/promocard/all/{user_mail}", method = RequestMethod.GET)
     public UserCardsDTO getAllCardsofUser(@PathVariable(value="user_mail") String user_mail){
 
@@ -151,6 +156,10 @@ public class ControllerPromobag {
         }
         return new UserCardsDTO(user_mail, new ArrayList<PromoCard>(cards));
     }
+
+    /////////////////////////////////**************FUNZIONANTI*********************////////////////////////////////////////
+
+
 
     //////TODO VA FATTA CON SHOPNAME
     @RequestMapping(value="/shopowner/user/all/{shop_name}", method = RequestMethod.GET)
