@@ -145,7 +145,10 @@ public class ControllerPromobag {
 
 
         Set<PromoCard> cards = new UserDaoImpl().getUserByMail(user_mail + ".com").getCards();
+        for (PromoCard pc : cards){
 
+            System.out.println("Prova stampa card: " + pc.getUser().getName());
+        }
         return new UserCardsDTO(user_mail, new ArrayList<PromoCard>(cards));
     }
 

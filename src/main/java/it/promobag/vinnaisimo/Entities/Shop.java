@@ -20,8 +20,8 @@ public class Shop {
 
     @Column(name = "shopName")
     private String shopName;
-
-    @OneToMany(cascade={CascadeType.ALL})
+    //(cascade={CascadeType.ALL})
+    @OneToMany(cascade={CascadeType.REMOVE})
     @JoinColumn(name="shop_id")
     private Set<Promotion> promotions;
 
