@@ -105,7 +105,7 @@ public class ControllerPromobag {
             pcards.add(pc);
             //////////////////
             for (PromoCard promoCard : pcards){
-                System.out.println("Stampo promocard : " + promoCard.getShop().getShopOwner() + " " + promoCard.getUser().getName());
+                System.out.println("Stampo promocard : " + promoCard.getShop().getShopOwner().getName() + " " + promoCard.getUser().getName());
             }
             //////////////////
             us.setCards(new HashSet<PromoCard>(pcards));

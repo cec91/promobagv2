@@ -20,7 +20,7 @@ public class PromoCard {
 
 
     @ManyToOne
-    @JoinColumn(name="user_id", insertable=false, updatable=false, nullable=false)
+    @JoinColumn(name="user_id")
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
