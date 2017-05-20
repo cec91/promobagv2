@@ -1,5 +1,6 @@
 package it.promobag.vinnaisimo;
 
+import it.promobag.vinnaisimo.Dao.PromotionDaoImpl;
 import it.promobag.vinnaisimo.Dao.ShopDaoImpl;
 import it.promobag.vinnaisimo.Dao.ShopOwnerDaoImpl;
 import it.promobag.vinnaisimo.Dao.UserDaoImpl;
@@ -28,14 +29,12 @@ public class ControllerPromobag {
     public HttpStatus siginIn(@RequestBody UserDTO input){
         UserDaoImpl usdi = new UserDaoImpl();
             new UserDaoImpl().insertUser(input);
-        //devo restituire id utente
         return HttpStatus.OK;
 
 
 
     }
 
-    //LOGIN LATO UTENTE FUNZIONANTE
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public HttpStatus logIn(@RequestBody UserDTO input){
         UserDaoImpl udi = new UserDaoImpl();
@@ -56,11 +55,10 @@ public class ControllerPromobag {
 
     }
 
-    //SIGNIN VENDITORE FUNZIONANTE
+
     @RequestMapping(value="/shopowner/signin", method= RequestMethod.POST)
     public HttpStatus siginInShop(@RequestBody ShopOwnerDTO input){
         new ShopOwnerDaoImpl().insertUser(input);
-        //devo restituire id venditore e id negozio
         return HttpStatus.OK;
     }
 
@@ -122,7 +120,7 @@ public class ControllerPromobag {
             new UserDaoImpl().updateUser(us);
 
 
-        }else{ //caso in cui non è il primo timbro
+        }else{
             System.out.println("Promocard esistente");
             //prendo sempre l'utente
             User us = new UserDaoImpl().getUserByMail(input.getUserMail());
@@ -135,10 +133,7 @@ public class ControllerPromobag {
             }
             us.setCards(pcs);
             new UserDaoImpl().updateUser(us);
-            //
-         /*   PromoCard pc = new PromocardDaoImpl().getPromoCardByShopId(input.getShopId());
-            pc.setGift_check(pc.getGift_check() + input.getNumeroTimbri());
-            */
+
 
         }
 
@@ -150,10 +145,7 @@ public class ControllerPromobag {
 
 
         Set<PromoCard> cards = new UserDaoImpl().getUserByMail(user_mail + ".com").getCards();
-        for (PromoCard pc : cards){
 
-            System.out.println("Prova stampa card: " + pc.getUser().getName());
-        }
         return new UserCardsDTO(user_mail, new ArrayList<PromoCard>(cards));
     }
 
@@ -161,15 +153,26 @@ public class ControllerPromobag {
 
 
 
-    //////TODO VA FATTA CON SHOPNAME
-    @RequestMapping(value="/shopowner/user/all/{shop_name}", method = RequestMethod.GET)
-    public String getAllUsersLinked(@PathVariable(value="shop_name") String shop_name){
+    //////TODO visualizzare gli utenti che hanno una promocard per questo negozio
+    @RequestMapping(value="/shopowner/user/all/{shopName}", method = RequestMethod.GET)
+    public String getAllUsersLinked(@PathVariable(value="shopName") String shop_name){
 
 
+            //inserire un campo count
       //  PromoCard pc = new PromocardDaoImpl().getPromoCardByShopId(idS);
         //qua prendere tutti gli utenti con promocard id
 
 
+        return "";
+    }
+
+
+    ///TODO visualizzare promozioni negozio
+    @RequestMapping(value="/user/all/promotions/", method = RequestMethod.GET)
+    public String getAllPromotions(){
+               ArrayList<Promotion> promotions =  new PromotionDaoImpl().getAllPromotion();
+
+            //prendere anche i dati del negozio
         return "";
     }
 }
