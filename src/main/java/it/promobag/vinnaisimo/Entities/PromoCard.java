@@ -1,5 +1,7 @@
 package it.promobag.vinnaisimo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -46,6 +48,7 @@ public class PromoCard {
         this.gift_check = gift_check;
     }
 
+    @JsonIgnore
     public User getUser() {
         return user;
     }
