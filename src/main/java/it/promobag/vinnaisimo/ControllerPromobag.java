@@ -163,7 +163,7 @@ public class ControllerPromobag {
 
 
 
-    //////TODO visualizzare gli utenti che hanno una promocard per questo negozio
+    //////TODO levare il jsonignore da promotion (get shop) e rivedere l'output mandando no una lista di user ma un altra
     @RequestMapping(value="/shopowner/user/all/{shopName}", method = RequestMethod.GET)
     public ArrayList<User> getAllUsersLinked(@PathVariable(value="shopName") String shopName){
 
@@ -183,10 +183,11 @@ public class ControllerPromobag {
         return toReturn;
     }
 
-
+        //capire perche mail null
     @RequestMapping(value = "/shopowner/login", method = RequestMethod.POST)
     public HttpStatus shopOwnerLogin(@RequestBody ShopOwnerDTO input){
 
+        System.out.println("stampo oggetto" + input.getPassword()+ " " + input.getName()+ " " + input.getMail()+ " " + input.getPassword()+ " " + input.getShop_name());
         ShopOwner so = new ShopOwnerDaoImpl().getShopOwnerByMail(input.getMail());
         if (so != null && so.getPassword().equals(input.getPassword())){
             return HttpStatus.OK;
