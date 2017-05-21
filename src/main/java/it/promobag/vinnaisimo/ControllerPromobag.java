@@ -187,6 +187,7 @@ public class ControllerPromobag {
             ArrayList<PromoCard> promoCards = new ArrayList<PromoCard>();
             for (User u : users){
                 System.out.println("Utente: " + u.getEmail());
+                promoCards = new ArrayList<PromoCard>();
                 promoCards.addAll(u.getCards());
                 for (PromoCard pc : promoCards) {
                     System.out.println("Shopname: " + pc.getShop().getShopName());
