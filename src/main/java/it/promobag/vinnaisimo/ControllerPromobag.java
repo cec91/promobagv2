@@ -186,8 +186,10 @@ public class ControllerPromobag {
             ArrayList<User> users = new UserDaoImpl().getAllUsers();
             ArrayList<PromoCard> promoCards = new ArrayList<PromoCard>();
             for (User u : users){
+                System.out.println("Utente: " + u.getEmail());
                 promoCards.addAll(u.getCards());
                 for (PromoCard pc : promoCards) {
+                    System.out.println("Shopname: " + pc.getShop().getShopName());
                     if(pc.getShop().getShopName().equals(shopName)){
                         toReturn.add(new UserToShopDTO(u.getName(),u.getEmail()));
                     }
