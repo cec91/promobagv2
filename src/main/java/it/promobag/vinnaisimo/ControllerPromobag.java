@@ -159,31 +159,6 @@ public class ControllerPromobag {
         return allPromotionDTOs;
     }
 
-    /////////////////////////////////**************FUNZIONANTI*********************////////////////////////////////////////
-
-
-
-    //////TODO levare il jsonignore da promotion (get shop) e rivedere l'output mandando no una lista di user ma un altra
-    @RequestMapping(value="/shopowner/user/all/{shopName}", method = RequestMethod.GET)
-    public ArrayList<User> getAllUsersLinked(@PathVariable(value="shopName") String shopName){
-
-            ArrayList<User> toReturn = new ArrayList<User>();
-            ArrayList<User> users = new UserDaoImpl().getAllUsers();
-            ArrayList<PromoCard> promoCards = new ArrayList<PromoCard>();
-            for (User u : users){
-                promoCards.addAll(u.getCards());
-                for (PromoCard pc : promoCards) {
-                    if(pc.getShop().getShopName().equals(shopName)){
-                        toReturn.add(u);
-                    }
-                }
-
-            }
-
-        return toReturn;
-    }
-
-        //capire perche mail null
     @RequestMapping(value = "/shopowner/login", method = RequestMethod.POST)
     public HttpStatus shopOwnerLogin(@RequestBody ShopOwnerDTO input){
 
@@ -198,6 +173,33 @@ public class ControllerPromobag {
 
 
     }
+
+    /////////////////////////////////**************FUNZIONANTI*********************////////////////////////////////////////
+
+
+
+    //////TODO levare il jsonignore da promotion (get shop) e rivedere l'output mandando no una lista di user ma un altra
+    @RequestMapping(value="/shopowner/user/all/{shopName}", method = RequestMethod.GET)
+    public ArrayList<UserToShopDTO> getAllUsersLinked(@PathVariable(value="shopName") String shopName){
+
+            ArrayList<UserToShopDTO> toReturn = new ArrayList<UserToShopDTO>();
+            ArrayList<User> users = new UserDaoImpl().getAllUsers();
+            ArrayList<PromoCard> promoCards = new ArrayList<PromoCard>();
+            for (User u : users){
+                promoCards.addAll(u.getCards());
+                for (PromoCard pc : promoCards) {
+                    if(pc.getShop().getShopName().equals(shopName)){
+                        toReturn.add(new UserToShopDTO(u.getName(),u.getEmail()));
+                    }
+                }
+
+            }
+
+        return toReturn;
+    }
+
+        //capire perche mail null
+
 
 
 }
