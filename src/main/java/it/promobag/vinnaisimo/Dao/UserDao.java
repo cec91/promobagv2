@@ -14,4 +14,5 @@ public interface UserDao {
     void insertUser(UserDTO userR);
     void updateUser(User us);
     Set<User> getUsersByPromocardId(int id);
-}
+    ArrayList<User> getAllUsers();
+ }

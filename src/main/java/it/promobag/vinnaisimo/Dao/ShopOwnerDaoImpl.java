@@ -3,9 +3,11 @@ package it.promobag.vinnaisimo.Dao;
 import it.promobag.vinnaisimo.Dto.ShopOwnerDTO;
 import it.promobag.vinnaisimo.Entities.Shop;
 import it.promobag.vinnaisimo.Entities.ShopOwner;
+import it.promobag.vinnaisimo.Entities.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.Persistence;
 
 /**
@@ -33,5 +35,21 @@ public class ShopOwnerDaoImpl implements ShopOwnerDao{
         em.getTransaction().commit();
         System.out.println("Transaction committed successfully");
 
+    }
+
+    @Override
+    public ShopOwner getShopOwnerByMail(String mail) {
+
+        ShopOwner so = new ShopOwner();
+
+        try{
+            so = (ShopOwner) em.createQuery("SELECT o FROM Owner o WHERE o.mail =:mail").setParameter("mail", mail).getSingleResult();
+
+        }catch (NonUniqueResultException e){
+            e.printStackTrace();
+            return null;
+        }
+
+        return so;
     }
 }

@@ -46,6 +46,21 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public ArrayList<User> getAllUsers() {
+
+        ArrayList<User> users = new ArrayList<User>();
+        try{
+            users = (ArrayList<User>) em.createQuery("SELECT u FROM User u").getResultList();
+        }catch(Exception e){
+
+            e.printStackTrace();
+        }
+
+
+        return users;
+    }
+
+    @Override
     public void insertUser(UserDTO userR) {
         User user = new User();
         user.setName(userR.getName());

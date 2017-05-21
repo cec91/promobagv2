@@ -2,6 +2,7 @@ package it.promobag.vinnaisimo.Dao;
 
 import it.promobag.vinnaisimo.Dto.ShopOwnerDTO;
 import it.promobag.vinnaisimo.Dto.UserDTO;
+import it.promobag.vinnaisimo.Entities.ShopOwner;
 
 /**
  * Created by vsantucc on 18/05/2017.
@@ -9,4 +10,5 @@ import it.promobag.vinnaisimo.Dto.UserDTO;
 public interface ShopOwnerDao {
 
     void insertUser(ShopOwnerDTO userO);
+    ShopOwner getShopOwnerByMail(String mail);
 }

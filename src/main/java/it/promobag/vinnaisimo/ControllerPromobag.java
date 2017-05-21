@@ -5,10 +5,7 @@ import it.promobag.vinnaisimo.Dao.ShopDaoImpl;
 import it.promobag.vinnaisimo.Dao.ShopOwnerDaoImpl;
 import it.promobag.vinnaisimo.Dao.UserDaoImpl;
 import it.promobag.vinnaisimo.Dto.*;
-import it.promobag.vinnaisimo.Entities.PromoCard;
-import it.promobag.vinnaisimo.Entities.Promotion;
-import it.promobag.vinnaisimo.Entities.Shop;
-import it.promobag.vinnaisimo.Entities.User;
+import it.promobag.vinnaisimo.Entities.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -149,33 +146,57 @@ public class ControllerPromobag {
         return new UserCardsDTO(user_mail, new ArrayList<PromoCard>(cards));
     }
 
-    /////////////////////////////////**************FUNZIONANTI*********************////////////////////////////////////////
 
-
-
-    //////TODO visualizzare gli utenti che hanno una promocard per questo negozio
-    @RequestMapping(value="/shopowner/user/all/{shopName}", method = RequestMethod.GET)
-    public String getAllUsersLinked(@PathVariable(value="shopName") String shop_name){
-
-
-            //inserire un campo count
-      //  PromoCard pc = new PromocardDaoImpl().getPromoCardByShopId(idS);
-        //qua prendere tutti gli utenti con promocard id
-
-
-        return "";
-    }
-
-
-    ///TODO visualizzare promozioni negozio
+    ///
     @RequestMapping(value="/user/all/promotions/", method = RequestMethod.GET)
     public ArrayList<AllPromotionDTO> getAllPromotions(){
-               ArrayList<Promotion> promotions =  new PromotionDaoImpl().getAllPromotion();
-                ArrayList<AllPromotionDTO> allPromotionDTOs = new ArrayList<AllPromotionDTO>();
+        ArrayList<Promotion> promotions =  new PromotionDaoImpl().getAllPromotion();
+        ArrayList<AllPromotionDTO> allPromotionDTOs = new ArrayList<AllPromotionDTO>();
         for (Promotion pro : promotions){
 
             allPromotionDTOs.add(new AllPromotionDTO(pro,pro.getShop().getShopName()));
         }
         return allPromotionDTOs;
     }
+
+    /////////////////////////////////**************FUNZIONANTI*********************////////////////////////////////////////
+
+
+
+    //////TODO visualizzare gli utenti che hanno una promocard per questo negozio
+    @RequestMapping(value="/shopowner/user/all/{shopName}", method = RequestMethod.GET)
+    public ArrayList<User> getAllUsersLinked(@PathVariable(value="shopName") String shopName){
+
+            ArrayList<User> toReturn = new ArrayList<User>();
+            ArrayList<User> users = new UserDaoImpl().getAllUsers();
+            ArrayList<PromoCard> promoCards = new ArrayList<PromoCard>();
+            for (User u : users){
+                promoCards.addAll(u.getCards());
+                for (PromoCard pc : promoCards) {
+                    if(pc.getShop().getShopName().equals(shopName)){
+                        toReturn.add(u);
+                    }
+                }
+
+            }
+
+        return toReturn;
+    }
+
+
+    @RequestMapping(value = "/shopowner/login", method = RequestMethod.POST)
+    public HttpStatus shopOwnerLogin(@RequestBody ShopOwnerDTO input){
+
+        ShopOwner so = new ShopOwnerDaoImpl().getShopOwnerByMail(input.getMail());
+        if (so != null && so.getPassword().equals(input.getPassword())){
+            return HttpStatus.OK;
+        }else{
+
+            return HttpStatus.NOT_FOUND;
+        }
+
+
+    }
+
+
 }
