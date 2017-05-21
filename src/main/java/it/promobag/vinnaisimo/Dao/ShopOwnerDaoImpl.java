@@ -43,7 +43,7 @@ public class ShopOwnerDaoImpl implements ShopOwnerDao{
         ShopOwner so = new ShopOwner();
 
         try{
-            so = (ShopOwner) em.createQuery("SELECT o FROM Owner o WHERE o.mail =:mail").setParameter("mail", mail).getSingleResult();
+            so = (ShopOwner) em.createQuery("SELECT o FROM ShopOwner o WHERE o.mail =:mail").setParameter("mail", mail).getSingleResult();
 
         }catch (NonUniqueResultException e){
             e.printStackTrace();
