@@ -25,7 +25,7 @@ public class PromoCard {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "shopName")
     private Shop shop;
 

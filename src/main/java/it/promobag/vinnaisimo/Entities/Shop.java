@@ -31,8 +31,9 @@ public class Shop {
     @OneToOne(mappedBy = "shop")
     public ShopOwner shopOwner;
 
-    @OneToOne(mappedBy = "shop")
+   /* @OneToOne(mappedBy = "shop")
     public PromoCard promoCard;
+    */
 
     public Shop() {
     }
@@ -68,7 +69,8 @@ public class Shop {
     public void setShopOwner(ShopOwner shopOwner) {
         this.shopOwner = shopOwner;
     }
-    @JsonIgnore
+
+    /*@JsonIgnore
     public PromoCard getPromoCard() {
         return promoCard;
     }
@@ -76,4 +78,5 @@ public class Shop {
     public void setPromoCard(PromoCard promoCard) {
         this.promoCard = promoCard;
     }
+    */
 }

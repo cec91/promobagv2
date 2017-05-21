@@ -198,7 +198,7 @@ public class ControllerPromobag {
         return toReturn;
     }
 
-        //capire perche mail null
+
 
 
 
