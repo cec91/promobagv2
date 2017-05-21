@@ -136,12 +136,12 @@ public class ControllerPromobag {
 
         return HttpStatus.OK;
     }
-
-    @RequestMapping(value="/user/promocard/all/{user_mail}", method = RequestMethod.GET)
+        //TODO da mettere una post
+    @RequestMapping(value="/user/promocard/{user_mail}/all", method = RequestMethod.GET)
     public UserCardsDTO getAllCardsofUser(@PathVariable(value="user_mail") String user_mail){
 
 
-        Set<PromoCard> cards = new UserDaoImpl().getUserByMail(user_mail + ".com").getCards();
+        Set<PromoCard> cards = new UserDaoImpl().getUserByMail(user_mail).getCards();
 
         return new UserCardsDTO(user_mail, new ArrayList<PromoCard>(cards));
     }
@@ -174,32 +174,34 @@ public class ControllerPromobag {
 
     }
 
-    /////////////////////////////////**************FUNZIONANTI*********************////////////////////////////////////////
-
-
-
     //////TODO levare il jsonignore da promotion (get shop) e rivedere l'output mandando no una lista di user ma un altra
     @RequestMapping(value="/shopowner/user/all/{shopName}", method = RequestMethod.GET)
     public ArrayList<UserToShopDTO> getAllUsersLinked(@PathVariable(value="shopName") String shopName){
 
-            ArrayList<UserToShopDTO> toReturn = new ArrayList<UserToShopDTO>();
-            ArrayList<User> users = new UserDaoImpl().getAllUsers();
-            ArrayList<PromoCard> promoCards = new ArrayList<PromoCard>();
-            for (User u : users){
-                System.out.println("Utente: " + u.getEmail());
-                promoCards = new ArrayList<PromoCard>();
-                promoCards.addAll(u.getCards());
-                for (PromoCard pc : promoCards) {
-                    System.out.println("Shopname: " + pc.getShop().getShopName());
-                    if(pc.getShop().getShopName().equals(shopName)){
-                        toReturn.add(new UserToShopDTO(u.getName(),u.getEmail()));
-                    }
+        ArrayList<UserToShopDTO> toReturn = new ArrayList<UserToShopDTO>();
+        ArrayList<User> users = new UserDaoImpl().getAllUsers();
+        ArrayList<PromoCard> promoCards = new ArrayList<PromoCard>();
+        for (User u : users){
+            System.out.println("Utente: " + u.getEmail());
+            promoCards = new ArrayList<PromoCard>();
+            promoCards.addAll(u.getCards());
+            for (PromoCard pc : promoCards) {
+                System.out.println("Shopname: " + pc.getShop().getShopName());
+                if(pc.getShop().getShopName().equals(shopName)){
+                    toReturn.add(new UserToShopDTO(u.getName(),u.getEmail()));
                 }
-
             }
+
+        }
 
         return toReturn;
     }
+
+    /////////////////////////////////**************FUNZIONANTI*********************////////////////////////////////////////
+
+
+
+
 
 
 
