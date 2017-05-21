@@ -40,12 +40,13 @@ public class ShopOwnerDaoImpl implements ShopOwnerDao{
     @Override
     public ShopOwner getShopOwnerByMail(String mail) {
 
+        System.out.println("Stampo la mail: " + mail);
         ShopOwner so = new ShopOwner();
 
         try{
             so = (ShopOwner) em.createQuery("SELECT o FROM ShopOwner o WHERE o.mail =:mail").setParameter("mail", mail).getSingleResult();
 
-        }catch (NonUniqueResultException e){
+        }catch (Exception e){
             e.printStackTrace();
             return null;
         }
