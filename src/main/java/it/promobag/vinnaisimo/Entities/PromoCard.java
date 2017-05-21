@@ -57,7 +57,7 @@ public class PromoCard {
         this.user = user;
     }
 
-    @JsonIgnore
+    //@JsonIgnore
     public Shop getShop() {
         return shop;
     }

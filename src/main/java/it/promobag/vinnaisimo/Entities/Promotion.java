@@ -46,7 +46,7 @@ public class Promotion {
         this.description = description;
     }
 
-    //@JsonIgnore
+    @JsonIgnore
     public Shop getShop() {
         return shop;
     }
