@@ -84,12 +84,12 @@ public class ControllerPromobag {
     @RequestMapping(value = "/user/promocard", method = RequestMethod.POST)
     public HttpStatus insertOrUpdatePromocard(@RequestBody PromocardDTO input){
 
-        System.out.println("FISRT: " + input.getFirst());
 
-        if (input.getFirst() == 1){
+
+     /*   if (input.getFirst() == 1){
             System.out.println("Prima promocard");
-            User us = new UserDaoImpl().getUserByMail(input.getUserMail());
-            Shop shop = new ShopDaoImpl().getShopByName(input.getShopName());
+            User us = new UserDaoImpl().getUserByMail(input.getUserMail()); */
+           /* Shop shop = new ShopDaoImpl().getShopByName(input.getShopName());
             PromoCard pc = new PromoCard();
             pc.setUser(us);
             pc.setGift_check(input.getNumeroTimbri());
@@ -116,23 +116,56 @@ public class ControllerPromobag {
 
             new UserDaoImpl().updateUser(us);
 
+        */
 
-        }else{
-            System.out.println("Promocard esistente");
+      //  }else{
+           boolean found = false;
             //prendo sempre l'utente
             User us = new UserDaoImpl().getUserByMail(input.getUserMail());
             Set<PromoCard> pcs = us.getCards();
             for (PromoCard pc : pcs){
 
                 if (pc.getShop().getShopName().equals(input.getShopName())){
+                    found = true;
                     pc.setGift_check(pc.getGift_check() + input.getNumeroTimbri());
                 }
             }
-            us.setCards(pcs);
-            new UserDaoImpl().updateUser(us);
+            if(found){ //se la promocard è gia esistente
+                us.setCards(pcs);
+                new UserDaoImpl().updateUser(us);
+                found = false;
+            }else{
+                Shop shop = new ShopDaoImpl().getShopByName(input.getShopName());
+                PromoCard pc = new PromoCard();
+                pc.setUser(us);
+                pc.setGift_check(input.getNumeroTimbri());
+                pc.setShop(shop);
 
 
-        }
+                ArrayList<PromoCard> pcards = new ArrayList<PromoCard>();
+                Set<PromoCard> pcs1 = us.getCards();
+
+                if (pcs1 == null || pcs1.size() == 0){ //se è anche la prima promocard per l'utente
+
+                    //bisogna creare l'arraylist e metterci la promocard
+                    pcards = new ArrayList<PromoCard>();
+
+                }else{ //se non è la prima mi prendo quelle che avevo e le metto in un arraylist
+                    //bisogna trasformarlo in arraylist e inserire la promocard
+                    pcards.addAll(us.getCards());
+
+                }
+                pcards.add(pc);
+
+
+                us.setCards(new HashSet<PromoCard>(pcards));
+
+                new UserDaoImpl().updateUser(us);
+            }
+
+
+
+        //}
 
         return HttpStatus.OK;
     }
